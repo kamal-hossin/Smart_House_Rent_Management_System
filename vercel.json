@@ -11,7 +11,11 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/(.*)",
+      "dest": "/house_rent/wsgi.py"
+    },
+    {
+      "src": "/admin/(.*)",
       "dest": "/house_rent/wsgi.py"
     }
   ]

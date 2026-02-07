@@ -1,6 +1,6 @@
 asgiref==3.10.0
 distlib==0.4.0
-Django==6.0.1
+Django==5.0.14
 django-filter==25.2
 django-tailwind==4.4.2
 djangorestframework==3.16.1
