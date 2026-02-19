@@ -12,7 +12,7 @@ from users.models import User
 if not User.objects.filter(username='admin').exists():
     user = User.objects.create_superuser(
         username='admin',
-        email='admin@example.com',
+        email='admin@admin.com',
         password='admin123'
     )
     user.role = 'admin'

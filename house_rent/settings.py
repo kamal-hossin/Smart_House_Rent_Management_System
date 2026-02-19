@@ -24,14 +24,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-=m%yum^v%s4%+k@d+cdta2zu&-k7ts0poo%ns_m6kk1u8rcstg')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = 'True'
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
+ALLOWED_HOSTS = [".vercel.app", "127.0.0.1"]
+AUTH_USER_MODEL = 'users.User'
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'house_rent.wsgi.application'
+WSGI_APPLICATION = 'house_rent.wsgi.app'
 
 
 # Database
@@ -90,8 +92,16 @@ DATABASES = {
     }
 }
 
-# Use DATABASE_URL if available (for production with PostgreSQL)
-if 'DATABASE_URL' in os.environ:
+# Use Supabase if available, otherwise fall back to SQLite
+if 'SUPABASE_URL' in os.environ and 'SUPABASE_KEY' in os.environ:
+    # Configure Supabase connection using PostgreSQL
+    import dj_database_url
+    DATABASES['default'] = dj_database_url.config(
+        default=f"postgresql://postgres:{os.environ['SUPABASE_KEY']}@{os.environ['SUPABASE_URL'].replace('https://', '')}:5432/postgres",
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
+elif 'DATABASE_URL' in os.environ:
     import dj_database_url
     DATABASES['default'] = dj_database_url.config(
         conn_max_age=600,

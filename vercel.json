@@ -3,20 +3,23 @@
   "builds": [
     {
       "src": "house_rent/wsgi.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb"
-      }
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/house_rent/wsgi.py"
+      "src": "/static/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000"
+      }
     },
     {
-      "src": "/admin/(.*)",
+      "src": "/(.*)",
       "dest": "/house_rent/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "house_rent.settings",
+    "PYTHONPATH": "$ROOT"
+  }
 }

@@ -107,6 +107,18 @@ A comprehensive web application built with Django and Django REST Framework for 
 4. Leave reviews for properties or other users
 5. Save favorite properties for quick access
 
+## Admin Panel
+
+Access the Django admin panel at `http://127.0.0.1:8000/admin/` using superuser credentials to manage users, advertisements, requests, and reviews.
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
 ## Deployment to Vercel
 
 This project is configured for deployment on Vercel.
@@ -131,7 +143,7 @@ This project is configured for deployment on Vercel.
 
 3. **Configure Environment Variables:**
    In the Vercel dashboard, add the following environment variables:
-   - `SECRET_KEY`: A secure random key (generate with `python -c "import secrets; print(secrets.token_urlsafe(50))"`)
+   - `SECRET_KEY`: A secure random key
    - `DEBUG`: `False`
    - `ALLOWED_HOSTS`: Your Vercel app URL (e.g., `your-app.vercel.app`)
 
@@ -147,18 +159,6 @@ This project is configured for deployment on Vercel.
 - SQLite is used by default but not recommended for production due to Vercel's serverless nature
 - For production database, use PostgreSQL and set `DATABASE_URL`
 - Static files are handled by WhiteNoise
-
-## Admin Panel
-
-Access the Django admin panel at `http://127.0.0.1:8000/admin/` using superuser credentials to manage users, advertisements, requests, and reviews.
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
 
 ## License
 
