@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-=m%yum^v%s4%+k@d+cdta
 DEBUG = 'True'
 
 ALLOWED_HOSTS = [".vercel.app", "127.0.0.1"]
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'house_rent.User'
 
 
 # Application definition
