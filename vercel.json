@@ -15,7 +15,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/house_rent/wsgi.py"
+      "dest": "house_rent/wsgi.py"
     }
   ],
   "env": {
